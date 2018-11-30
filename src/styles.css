@@ -1,0 +1,118 @@
+.App {
+	font-family: sans-serif;
+	text-align: center;
+}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 0;
+	padding: 0;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	height: 100vh;
+}
+
+.menu h2 {
+	margin: 0;
+	padding: 0;
+
+	color: brown;
+	background-color: antiquewhite;
+	letter-spacing: 2px; /*khoảng cách giữa các chữ cái */
+	text-transform: uppercase; /*chuyển thành chữ hoa */
+}
+.menu ul {
+	border: dashed 1px;
+	border-top: none;
+
+	margin: 0;
+	padding: 20px 40px;
+}
+
+.menu li {
+	list-style: none;
+	padding: 5px;
+	margin: 2px;
+
+	font-size: 18px;
+}
+
+.menu input[type="checkbox"] {
+	display: none;
+}
+
+.menu .menu_name {
+	position: relative;
+	display: inline-block;
+	overflow: hidden; chống tràn
+	/* padding: 0 5px; */
+	/* transition: 0.5s; */
+}
+
+.menu input[type="checkbox"]:checked ~ .menu_name {
+	color: rgb(119, 103, 103);
+}
+.menu .menu_name::before {
+	content: "";
+
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	background-color: red;
+	transition: 0.5s;
+}
+
+.menu input[type="checkbox"]:checked ~ .menu_name::before {
+	left: 100%;
+	transition-delay: 0;
+}
+
+/* tạo ra dấu gạch ngang bằng postion top 50% amnd height: 1px;sau ddps scaleX ẩn hiện no */
+.menu .menu_name::after {
+	content: "";
+
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 100%;
+	height: 1px;
+
+	background-color: black;
+	transform-origin: left;
+	transform: scaleX(0);
+	transition: 0.5s;
+}
+
+.menu input[type="checkbox"]:checked ~ .menu_name::after {
+	transform: scaleX(1);
+	transition-delay: 0.5s;
+}
+
+/* tạo ra ô vuông  */
+.menu .icon {
+	border: solid 1px black;
+	width: 10px;
+	height: 10px;
+	display: inline-block;
+	overflow: hidden;
+	/* margin-right: 5px; */
+	/* top: 0px; */
+	/* box-sizing: border-box; */
+	position: relative;
+}
+.menu .icon::before {
+	content: "x";
+	position: absolute;
+	top: -5px;
+
+	transition: 0.5s;
+	transform: translateY(-100%);
+}
+.menu input[type="checkbox"]:checked ~ .icon::before {
+  content: 'v';
+  transform: translateY(0);
